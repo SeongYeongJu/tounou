@@ -11,7 +11,10 @@ const ProductList = ({ items }: { items: ItemType[] }) => {
                     <FirstProductDescription>
                         {items[0]?.description}
                     </FirstProductDescription>
-                    <FirstProductTitle>{items[0]?.title}</FirstProductTitle>
+                    <FirstProductTitle>
+                        {items[0]?.title}
+                        <sup>+</sup>
+                    </FirstProductTitle>
                     <AvailableColorText>Available Colors</AvailableColorText>
                     <ColorText>Find your color</ColorText>
                     <CircleBox>
@@ -27,7 +30,7 @@ const ProductList = ({ items }: { items: ItemType[] }) => {
                         {items[0]?.promotionText}
                     </FirstProductPromotion>
                 </FirstProductTextBox>
-                <FirstProductImage src={items[0]?.imageURL} />
+                <FirstProductImage src={items[0]?.imageURL} loading="lazy" />
             </FirstProductContainer>
             <ProductContainer>
                 {items
@@ -51,18 +54,41 @@ const ProductListWrapper = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 1440px;
+
+    @media screen and (max-width: 1280px) {
+        width: 1280px;
+    }
+
+    @media screen and (max-width: 1024px) {
+        width: 1024px;
+    }
+
+    @media screen and (max-width: 820px) {
+        margin-top: 0;
+        width: 100%;
+    }
+
+    @media screen and (max-width: 525px) {
+        margin-top: 30rem;
+    }
 `;
 
 const FirstProductContainer = styled.div`
+    position: relative;
+    height: 811.5px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    width: 100vw;
-    @media screen and (max-width: 866px) {
+    width: calc(100% - 186px);
+
+    @media screen and (max-width: 820px) {
         flex-direction: column-reverse;
         height: 880px;
+        margin-bottom: 77px;
     }
-    @media screen and (max-width: 640px) {
+
+    @media screen and (max-width: 525px) {
         height: 700px;
     }
 `;
@@ -70,69 +96,58 @@ const FirstProductContainer = styled.div`
 const FirstProductTextBox = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 500px;
     height: 400px;
-    @media screen and (max-width: 1178px) {
-        width: 400px;
-    }
-    @media screen and (max-width: 500px) {
-        width: 300px;
-        height: 300px;
+
+    @media screen and (max-width: 525px) {
+        width: 290px;
     }
 `;
 
 const FirstProductTitle = styled.span`
-    font-size: 3.5rem;
+    font-size: 3.125rem;
     font-weight: 700;
-    @media screen and (max-width: 1178px) {
-        font-size: 2.48rem;
-    }
 
-    @media screen and (max-width: 640px) {
+    @media screen and (max-width: 525px) {
+        color: #2b2835;
         font-size: 2rem;
     }
 `;
-const FirstProductDescription = styled.span`
-    font-size: 1.2rem;
-    @media screen and (max-width: 1178px) {
-        font-size: 1rem;
-    }
 
-    @media screen and (max-width: 640px) {
-        font-size: 14px;
+const FirstProductDescription = styled.span`
+    font-size: 1rem;
+
+    @media screen and (max-width: 525px) {
+        font-weight: 500;
     }
 `;
 
 const AvailableColorText = styled.span`
-    font-size: 3rem;
-    @media screen and (max-width: 1178px) {
-        font-size: 2.1rem;
-    }
+    font-size: 2.5rem;
 
-    @media screen and (max-width: 640px) {
-        font-size: 1.5rem;
+    @media screen and (max-width: 525px) {
+        color: #2b2835;
+        font-size: 2rem;
+        font-weight: 700;
     }
 `;
 
 const ColorText = styled.p`
-    font-size: 1.1rem;
-    @media screen and (max-width: 1178px) {
-        font-size: 0.85rem;
-    }
+    font-size: 1rem;
+    font-weight: 400;
+    color: #2b2835;
 `;
 
 const CircleBox = styled.div`
     display: flex;
     gap: 1rem;
     margin-bottom: 1.5rem;
-    @media screen and (max-width: 640px) {
-        margin-bottom: 0;
-    }
 `;
 
 const WhiteCircle = styled.div`
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 37px;
+    height: 37px;
     border-radius: 50%;
     border: 1px dashed #eaeaea;
     background: #ffff;
@@ -145,8 +160,8 @@ const WhiteCircle = styled.div`
 `;
 
 const PinkCircle = styled.div`
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 37px;
+    height: 37px;
     border-radius: 50%;
     border: 1px dashed #eaeaea;
     background: #dd5656;
@@ -159,8 +174,8 @@ const PinkCircle = styled.div`
 `;
 
 const BlackCircle = styled.div`
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 37px;
+    height: 37px;
     border-radius: 50%;
     border: 1px dashed #eaeaea;
     background: #000000;
@@ -179,58 +194,75 @@ const PriceAndButtonBox = styled.div`
 `;
 
 const FirstProductPrice = styled.span`
-    font-size: 3rem;
-    margin-right: 2rem;
-    @media screen and (max-width: 640px) {
+    font-size: 2.5rem;
+    margin-right: 44px;
+
+    @media screen and (max-width: 525px) {
+        margin-right: 1px;
         font-size: 2.16rem;
     }
 `;
 
 const FirstProductPromotion = styled.p`
-    font-size: 1rem;
+    font-size: 13px;
+    font-weight: 500;
     opacity: 0.5168573;
-    @media screen and (max-width: 640px) {
-        display: block;
-        font-size: 14px;
+
+    @media screen and (max-width: 525px) {
+        opacity: 0.68459356;
     }
 `;
 
 const FirstProductImage = styled.img`
-    width: 48rem;
-    height: 48rem;
-    @media screen and (max-width: 1178px) {
-        width: 30rem;
-        height: 30rem;
+    position: absolute;
+    top: 0;
+    right: -47px;
+    width: 755px;
+    height: 755px;
+
+    @media screen and (max-width: 1280px) {
+        position: static;
+        width: 679.5px;
+        height: 679.5px;
     }
-    /* @media screen and (max-width: 1042px) {
+
+    @media screen and (max-width: 1024px) {
         width: 32rem;
         height: 32rem;
-    } */
-    @media screen and (max-width: 640px) {
-        width: 28rem;
-        height: 28rem;
     }
-    @media screen and (max-width: 500px) {
-        width: 22rem;
-        height: 22rem;
+
+    @media screen and (max-width: 525px) {
+        width: 22.4rem;
+        height: 22.4rem;
+    }
+
+    @media screen and (max-width: 425px) {
+        width: 348px;
+        height: 348px;
     }
 `;
 
 const ProductContainer = styled.div`
     display: grid;
-    grid-template-rows: 50% 50%;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 393px 393px 393px;
     justify-items: center;
     align-items: center;
-    row-gap: 1rem;
-    width: 100%;
+    row-gap: 34px;
+    column-gap: 37px;
+    width: calc(100% - 186px);
+    margin-top: -100px;
 
-    @media screen and (max-width: 1042px) {
+    @media screen and (max-width: 1280px) {
         grid-template-rows: 33% 33% 33%;
         grid-template-columns: 50% 50%;
+        column-gap: 0;
     }
-    @media screen and (max-width: 720px) {
+
+    @media screen and (max-width: 820px) {
         grid-template-rows: 16.5% 16.5% 16.5% 16.5% 16.5% 16.5%;
         grid-template-columns: 100%;
+        margin-top: 0;
+        row-gap: 16px;
+        width: 100%;
     }
 `;

@@ -24,8 +24,25 @@ const EmailInputWrapper = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 500px;
+    width: 1440px;
+    height: 335px;
+    margin-top: 34px;
+    margin-bottom: 64px;
+
+    @media screen and (max-width: 1280px) {
+        width: 1280px;
+        margin-top: 6rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+        width: 1024px;
+    }
+
+    @media screen and (max-width: 820px) {
+        width: 100%;
+        height: 330px;
+        margin-top: 4rem;
+    }
 `;
 
 const EmailInputContainer = styled.div`
@@ -33,29 +50,41 @@ const EmailInputContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: calc(100% - 200px);
-    min-width: 680px;
-    height: 400px;
+    width: calc(100% - 186px);
+    height: 335px;
     background-color: #f8f8f9;
-    @media screen and (max-width: 720px) {
-        min-width: 340px;
+
+    @media screen and (max-width: 820px) {
+        width: 393px;
         height: 330px;
+    }
+
+    @media screen and (max-width: 425px) {
+        width: 341px;
     }
 `;
 
 const Title = styled.h1`
-    font-size: 3.15rem;
+    font-size: 3.125rem;
+    color: #2b2835;
+    font-weight: 700;
+    line-height: 55px;
     margin-block-start: 0;
     margin-block-end: 0;
+
+    @media screen and (max-width: 820px) {
+        font-size: 2rem;
+    }
 `;
 
 const SubText = styled.p`
-    font-size: 1.1rem;
+    font-size: 14px;
     font-weight: 400;
-    @media screen and (max-width: 720px) {
+    color: #030303;
+
+    @media screen and (max-width: 820px) {
         display: block;
-        width: 230px;
-        font-size: 14px;
+        width: 250px;
     }
 `;
 
@@ -63,41 +92,45 @@ const InputBarBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 670px;
-    height: 46px;
-    border-radius: 30px;
-    border: 1px solid #858383;
+    width: 507px;
+    height: 36px;
+    border-radius: 18px;
+    border: 1px solid #bfbfbf;
     background-color: white;
     margin-top: 2rem;
-    @media screen and (max-width: 720px) {
-        width: 90%;
-        height: 30px;
+
+    @media screen and (max-width: 820px) {
+        width: 298px;
+        height: 36px;
     }
 `;
 
 const InputBar = styled.input`
     width: 90%;
-    height: 36px;
+    height: 34px;
     font-size: large;
     border: none;
     outline: none;
     background-color: white;
-    @media screen and (max-width: 720px) {
-        height: 20px;
+
+    @media screen and (max-width: 820px) {
+        height: 34px;
     }
 `;
 
 const SignUpButton = styled.button`
-    width: 670px;
-    height: 46px;
+    width: 507px;
+    height: 36px;
     border: none;
-    font-size: large;
-    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 18px;
     background-color: #ffc700;
     margin-top: 1rem;
     cursor: pointer;
-    @media screen and (max-width: 720px) {
-        width: 90%;
-        height: 30px;
+
+    @media screen and (max-width: 820px) {
+        width: 298px;
+        height: 36px;
     }
 `;

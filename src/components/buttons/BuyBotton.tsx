@@ -29,18 +29,12 @@ const StyledButton = styled.button`
     border: none;
     border-radius: 1.5rem;
     font-weight: 600;
-    font-size: 1.05rem;
+    font-size: 14px;
     color: ${(props) => (props.color === "yellow" ? "black" : "white")};
     background: ${(props) =>
         props.color === "yellow" ? "#ffc700" : "#000000"};
     &:hover {
         transform: scale(1.02);
         transition: 0.2s;
-    }
-    @media screen and (max-width: 640px) {
-        width: 150px;
-        height: 36px;
-        border-radius: 1rem;
-        font-size: 14px;
     }
 `;

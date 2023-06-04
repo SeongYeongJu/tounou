@@ -5,7 +5,7 @@ const Product = ({ product }: { product: ItemType }) => {
     // 각각의 상품들입니다.
     return (
         <ProductBox key={product?.id}>
-            <ProductImage src={product?.imageURL} />
+            <ProductImage src={product?.imageURL} loading="lazy" />
             <ProductTextBox>
                 <ProductTitle>{product?.title}</ProductTitle>
                 <ProductDescription>{product?.description}</ProductDescription>
@@ -25,13 +25,16 @@ const ProductBox = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 68%;
-    min-width: 22rem;
-    height: 90%;
+    width: 393px;
+    height: 560px;
     background: #f8f8f9;
     &:hover {
         transform: scale(1.01);
         transition: 0.2s;
+    }
+
+    @media screen and (max-width: 425px) {
+        width: 341px;
     }
 `;
 
@@ -49,24 +52,34 @@ const ProductTextBox = styled.div`
 `;
 
 const ProductTitle = styled.h1`
-    font-size: 2.5rem;
+    font-size: 3.125rem;
     font-weight: 500;
+    color: #2b2835;
     margin-block-start: 0;
     margin-block-end: 0;
+
+    @media screen and (max-width: 425px) {
+        font-size: 2.5rem;
+    }
 `;
 
 const ProductDescription = styled.span`
     display: block;
-    width: 16.7rem;
+    font-size: 14px;
+    width: 16rem;
     line-height: 1.2rem;
     color: #030303;
 `;
 
 const ProductPrice = styled.span`
     color: #9d8220;
-    font-size: 1.7rem;
+    font-size: 25px;
     font-weight: 600;
-    margin-right: 1rem;
+    margin-right: 27px;
+
+    @media screen and (max-width: 425px) {
+        margin-right: 10px;
+    }
 `;
 
 const PriceAndButtonBox = styled.div`
